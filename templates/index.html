@@ -2,5 +2,19 @@
 
     <!-- MAIN -->
     {% block main %}
+    <section class="consulta">
+        <form action="/" method="post">
+            <label for="libro">Libro</label>
+            <input type="text" name="libro" id="libro">
+            <button type="submit">Consultar</button>
+        </form>
+    </section>
     
+    <section class="respuesta">
+        <ul class="respuesta__lista">
+            <li>{{ titulo }}</li>
+            <li>{{ precio }}</li>
+            <li>{{ autor }}</li>
+        </ul>
+    </section>
     {% endblock %}
