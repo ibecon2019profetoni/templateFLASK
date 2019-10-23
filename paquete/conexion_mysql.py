@@ -1,22 +1,29 @@
 import pymysql
 
-conexion = pymysql.connect('localhost', 'root', 'root', 'OLD_libreriaToni')
 
-cursor = conexion.cursor()
+def conexion_MYSQL(libro):
+    conexion = pymysql.connect('localhost', 'root', 'root', 'OLD_libreriaToni')
 
-cursor.execute('''
-    SELECT
-    b.title,
-    b.price,
-    a.name 
-    FROM 
-    books AS b
-    INNER JOIN authors AS a
-    ON a.author_id = b.author_id
-''')
+    cursor = conexion.cursor()
 
-conexion.commit()
+    cursor.execute(f'''
+        SELECT
+        b.title,
+        b.price,
+        a.name 
+        FROM 
+        books AS b
+        INNER JOIN authors AS a
+        ON a.author_id = b.author_id 
+        WHERE b.title 
+        LIKE "%{libro}%"
+        LIMIT 5
+    ''')
 
-datos = cursor.fetchall()
+    conexion.commit()
 
-conexion.close()
+    datos = cursor.fetchall()
+
+    conexion.close()
+
+    return datos
