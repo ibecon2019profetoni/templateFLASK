@@ -2,23 +2,29 @@
 
 <!-- MAIN -->
 {% block main %}
-<section class="consulta">
+<section class="section consulta">
+  
   <form action="/" method="post">
-    <label for="libro">Libro</label>
-    <input type="text" name="libro" id="libro" required placeholder="título del libro"/>
-    <button type="submit">Consultar</button>
+    <div class="field has-addons">
+    <div class="control">
+    <input class="input" type="text" name="libro" id="libro" required placeholder="título del libro"/>
+  </div>
+    <div class="control">
+    <button class="button is-info" type="submit">Consultar</button>
+  </div>
   </form>
+</div>
 </section>
 
+<section class="section respuesta">
 
 {% for titulo, precio, autor in consulta %}
-<section class="respuesta">
-  <ul class="respuesta__lista">
+  <ul class="content respuesta__lista">
     <li>{{ titulo }}</li>
     <li>{{ precio }}</li>
     <li>{{ autor }}</li>
+  </ul>
   {% endfor %}
 
-  </ul>
 </section>
 {% endblock %}
