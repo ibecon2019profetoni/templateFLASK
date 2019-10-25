@@ -1,20 +1,24 @@
 {% extends 'layout.html' %}
 
-    <!-- MAIN -->
-    {% block main %}
-    <section class="consulta">
-        <form action="/" method="post">
-            <label for="libro">Libro</label>
-            <input type="text" name="libro" id="libro">
-            <button type="submit">Consultar</button>
-        </form>
-    </section>
-    
-    <section class="respuesta">
-        <ul class="respuesta__lista">
-            <li>{{ titulo }}</li>
-            <li>{{ precio }}</li>
-            <li>{{ autor }}</li>
-        </ul>
-    </section>
-    {% endblock %}
+<!-- MAIN -->
+{% block main %}
+<section class="consulta">
+  <form action="/" method="post">
+    <label for="libro">Libro</label>
+    <input type="text" name="libro" id="libro" required placeholder="título del libro"/>
+    <button type="submit">Consultar</button>
+  </form>
+</section>
+
+
+{% for titulo, precio, autor in consulta %}
+<section class="respuesta">
+  <ul class="respuesta__lista">
+    <li>{{ titulo }}</li>
+    <li>{{ precio }}</li>
+    <li>{{ autor }}</li>
+  {% endfor %}
+
+  </ul>
+</section>
+{% endblock %}
