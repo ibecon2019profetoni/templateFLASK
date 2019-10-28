@@ -20,9 +20,13 @@
 
 {% for titulo, precio, autor in consulta %}
   <ul class="content respuesta__lista">
-    <li>{{ titulo }}</li>
-    <li>{{ precio }}</li>
-    <li>{{ autor }}</li>
+    <li><b>Título:</b> {{ titulo }}</li>
+    {% if precio != None %}
+    <li><b>Precio:</b> {{ precio }}<i>€</i></li>
+    {% else %}
+    <li><b>Precio no disponible!</b></i></li>
+    {% endif %}
+    <li><b>Autor:</b> {{ autor }}</li>
   </ul>
   {% endfor %}
 
